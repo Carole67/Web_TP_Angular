@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { PhoneFormatPipe } from '../phone-format.pipe';
 
 // import custom validator to validate that password and confirm password fields match
 import { MustMatch } from '../_helpers/must-match.validator';
@@ -7,14 +8,31 @@ import { MustMatch } from '../_helpers/must-match.validator';
 @Component({
     selector: 'app-compte',
     templateUrl: './compte.component.html',
-    styleUrls: ['./compte.component.css']
+    styleUrls: ['./compte.component.css'],
+    providers: [PhoneFormatPipe]
 })
 export class CompteComponent implements OnInit {
 
     registerForm: FormGroup;
     submitted = false;
+    private _segment;
+    private _seg;
 
-    constructor(private formBuilder: FormBuilder) { }
+    get segment() {
+        return this._segment;
+    }
+
+    get seg() {
+        return this._seg;
+    }
+
+    set seg(value) {
+        this._segment = this.phonePipe.transform(value)
+    }
+
+    constructor(
+        private formBuilder: FormBuilder, private phonePipe: PhoneFormatPipe
+    ) { this._seg ="";}
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -33,9 +51,7 @@ export class CompteComponent implements OnInit {
             ])],
             ville: ['', Validators.required],
             pays: ['', Validators.required],
-            tel: ['', Validators.compose([
-                Validators.required
-            ])],
+            tel: ['', Validators.required],
             mail: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$')
@@ -58,14 +74,7 @@ export class CompteComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
         // display form values on success
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
     }
-
-
 }

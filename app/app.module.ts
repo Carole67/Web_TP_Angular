@@ -4,17 +4,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CompteComponent } from './compte/compte.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
+import { PhoneFormatPipe } from './phone-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompteComponent
+    CompteComponent,
+    NavigationComponent,
+    FooterComponent,
+    PhoneFormatPipe
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

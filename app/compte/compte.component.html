@@ -80,7 +80,7 @@
                         <div class="form-group row">
                             <div class="col-sm">
                                 <label for="tel">Téléphone</label>
-                                <input class="form-control" type="tel" id="tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" />
+                                <input class="form-control" type="tel" id="tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" [(ngModel)]="seg" /> value of ngModel -- {{segment}}
                                 <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
                                     <div *ngIf="f.tel.errors.required">Téléphone requis</div>
                                     <div *ngIf="f.tel.errors.pattern">Téléphone invalide</div>
