@@ -17,22 +17,31 @@ export class CompteComponent implements OnInit {
     submitted = false;
     private _segment;
     private _seg;
+    valueToBePassed: string;
 
+    // show or hide
+    public show: boolean = false;
+    public buttonName: any = 'Show';
+
+    // get and set segment
     get segment() {
         return this._segment;
     }
+    set segment(value) {
+        this._segment = value;
+    }
 
+    // get and set seg
     get seg() {
         return this._seg;
     }
-
     set seg(value) {
         this._segment = this.phonePipe.transform(value)
     }
 
     constructor(
         private formBuilder: FormBuilder, private phonePipe: PhoneFormatPipe
-    ) { this._seg ="";}
+    ) { this._seg = ""; }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -52,6 +61,7 @@ export class CompteComponent implements OnInit {
             ville: ['', Validators.required],
             pays: ['', Validators.required],
             tel: ['', Validators.required],
+            tel_formated: ['', Validators.required],
             mail: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$')
@@ -66,15 +76,34 @@ export class CompteComponent implements OnInit {
             {
                 validator: MustMatch('password', 'confirmPassword')
             });
+
+        this.registerForm.valueChanges.subscribe(newVal => console.log(newVal))
     }
+
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
+        this.show = true;
         this.submitted = true;
 
-        // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            this.show = false;
+        }
+        else {
+            // display form values on success
+            //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.get('login').value, null, 4));
+        }
+        this.toggle(this.show);
+    }
+
+    toggle(show: Boolean) {
+        // hide or show reacap
+        if (show)
+            this.buttonName = "Hide";
+        else
+            this.buttonName = "Show";
     }
 }

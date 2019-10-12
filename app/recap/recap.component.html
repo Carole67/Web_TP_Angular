@@ -1,0 +1,42 @@
+<div class="card">
+    <h2 class="text-center font-weight-bold">Récapitulatif</h2>
+    <div class="card-body">
+        <div class="form-group row">
+            <div class="col-sm">
+                <p>Nom : {{ registerForm.get('lastName').value}}</p>
+            </div>
+            <div class="col-sm">
+                <p>Prénom : {{ registerForm.get('firstName').value}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm">
+                <p>Adresse : {{ registerForm.get('address').value}}</p>
+            </div>
+            <div class="col-sm">
+                <p>Code postal : {{ registerForm.get('cp').value}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm">
+                <p>Ville : {{ registerForm.get('ville').value}}</p>
+            </div>
+            <div class="col-sm">
+                <p>Pays : {{ registerForm.get('pays').value}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm">
+                <p>Téléphone : {{ registerForm.get('tel_formated').value}}</p>
+            </div>
+            <div class="col-sm">
+                <p>Email : {{ registerForm.get('mail').value}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm">
+                <p>Login : {{ registerForm.get('login').value}}</p>
+            </div>
+        </div>
+    </div>
+</div>

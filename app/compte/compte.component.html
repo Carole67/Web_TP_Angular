@@ -27,7 +27,7 @@
                         <div class="form-group row">
                             <div class="col-sm">
                                 <label for="nom">Nom</label>
-                                <input class="form-control" type="text" id="nom" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                <input matInput class="form-control" type="text" id="nom" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                     <div *ngIf="f.lastName.errors.required">Nom requis</div>
                                 </div>
@@ -80,7 +80,8 @@
                         <div class="form-group row">
                             <div class="col-sm">
                                 <label for="tel">Téléphone</label>
-                                <input class="form-control" type="tel" id="tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" [(ngModel)]="seg" /> value of ngModel -- {{segment}}
+                                <input class="form-control" type="tel" id="tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" [(ngModel)]="seg" /> Format international : {{segment}}
+                                <input class="form-control" type="tel" id="tel_formated" formControlName="tel_formated" [(ngModel)]="segment" hidden>
                                 <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
                                     <div *ngIf="f.tel.errors.required">Téléphone requis</div>
                                     <div *ngIf="f.tel.errors.pattern">Téléphone invalide</div>
@@ -126,10 +127,13 @@
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-primary btn-lg" type="submit" id="btn_submit">Go !</button>
+                            <button class="btn btn-primary btn-lg" type="submit" id="btn_submit" (click)="onSubmit()">Go !</button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div *ngIf="show">
+                <app-recap [registerForm]="registerForm"></app-recap>
             </div>
         </div>
     </div>

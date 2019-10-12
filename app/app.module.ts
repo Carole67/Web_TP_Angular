@@ -7,6 +7,7 @@ import { CompteComponent } from './compte/compte.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { PhoneFormatPipe } from './phone-format.pipe';
+import { RecapComponent } from './recap/recap.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PhoneFormatPipe } from './phone-format.pipe';
     CompteComponent,
     NavigationComponent,
     FooterComponent,
-    PhoneFormatPipe
+    PhoneFormatPipe,
+    RecapComponent
   ],
   imports: [
     BrowserModule,
