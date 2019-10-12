@@ -39,28 +39,46 @@ export class CompteComponent implements OnInit {
         this._segment = this.phonePipe.transform(value)
     }
 
+    // get civility
+    get civilite() {
+        return this.registerForm.get('civilite');
+    }
+
     constructor(
         private formBuilder: FormBuilder, private phonePipe: PhoneFormatPipe
     ) { this._seg = ""; }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
+            civilite: ['Monsieur', Validators.required],
             firstName: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z]+$')
+                Validators.pattern('^[a-zA-Z ]*$')
             ])],
             lastName: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z]+$')
+                Validators.pattern('^[a-zA-Z ]*$')
             ])],
-            address: ['', Validators.required],
+            address: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z0-9 ]*$')
+            ])],
             cp: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^[0-9]{5}$')
             ])],
-            ville: ['', Validators.required],
-            pays: ['', Validators.required],
-            tel: ['', Validators.required],
+            ville: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z ]*$')
+            ])],
+            pays: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z ]*$')
+            ])],
+            tel: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^0[1-6]{1}(([0-9]{2}){4})$')
+            ])],
             tel_formated: ['', Validators.required],
             mail: ['', Validators.compose([
                 Validators.required,
@@ -70,7 +88,11 @@ export class CompteComponent implements OnInit {
                 Validators.required,
                 Validators.pattern('^[a-zA-Z0-9-_]+$')
             ])],
-            password: ['', [Validators.required, Validators.minLength(8)]],
+            password: ['', [
+                Validators.required,
+                Validators.minLength(8)
+                //Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})')
+            ]],
             confirmPassword: ['', Validators.required],
         },
             {
