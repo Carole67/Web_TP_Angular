@@ -8,7 +8,7 @@ import { MustMatch } from '../_helpers/must-match.validator';
 @Component({
     selector: 'app-compte',
     templateUrl: './compte.component.html',
-    styleUrls: ['./compte.component.css'],
+    styleUrls: ['./compte.component.scss'],
     providers: [PhoneFormatPipe]
 })
 export class CompteComponent implements OnInit {
@@ -82,7 +82,7 @@ export class CompteComponent implements OnInit {
             tel_formated: ['', Validators.required],
             mail: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$')
+                Validators.pattern('^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,6}$')
             ])],
             login: ['', Validators.compose([
                 Validators.required,
