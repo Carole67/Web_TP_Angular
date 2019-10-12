@@ -15,71 +15,70 @@ export class CompteComponent implements OnInit {
 
     registerForm: FormGroup;
     submitted = false;
-    private _segment;
-    private _seg;
-    valueToBePassed: string;
+    private _ouputPhone;
+    private _inputPhone;
 
     // show or hide
     public show: boolean = false;
     public buttonName: any = 'Show';
 
-    // get and set segment
-    get segment() {
-        return this._segment;
+    // get and set ouputPhone
+    get ouputPhone() {
+        return this._ouputPhone;
     }
-    set segment(value) {
-        this._segment = value;
+    set ouputPhone(value) {
+        this._ouputPhone = value;
     }
 
-    // get and set seg
-    get seg() {
-        return this._seg;
+    // get and set inputPhone
+    get inputPhone() {
+        return this._inputPhone;
     }
-    set seg(value) {
-        this._segment = this.phonePipe.transform(value)
+    set inputPhone(value) {
+        this._ouputPhone = this.phonePipe.transform(value)
     }
 
     // get civility
-    get civilite() {
-        return this.registerForm.get('civilite');
+    get civility() {
+        return this.registerForm.get('civility');
     }
 
     constructor(
         private formBuilder: FormBuilder, private phonePipe: PhoneFormatPipe
-    ) { this._seg = ""; }
+    ) { this._inputPhone = ""; }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            civilite: ['Monsieur', Validators.required],
+            civility: ['Monsieur', Validators.required],
             firstName: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z ]*$')
+                Validators.pattern('^[a-zA-Z- ]*$')
             ])],
             lastName: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z ]*$')
+                Validators.pattern('^[a-zA-Z- ]*$')
             ])],
             address: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z0-9 ]*$')
+                Validators.pattern('^[a-zA-Z0-9- ]*$')
             ])],
             cp: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^[0-9]{5}$')
             ])],
-            ville: ['', Validators.compose([
+            city: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z ]*$')
+                Validators.pattern('^[a-zA-Z-/ ]*$')
             ])],
-            pays: ['', Validators.compose([
+            land: ['', Validators.compose([
                 Validators.required,
-                Validators.pattern('^[a-zA-Z ]*$')
+                Validators.pattern('^[a-zA-Z- ]*$')
             ])],
-            tel: ['', Validators.compose([
+            phone: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^0[1-6]{1}(([0-9]{2}){4})$')
             ])],
-            tel_formated: ['', Validators.required],
+            phone_formated: ['', Validators.required],
             mail: ['', Validators.compose([
                 Validators.required,
                 Validators.pattern('^[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,6}$')

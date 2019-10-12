@@ -9,17 +9,17 @@
                     <form id="form_client" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                         <div class="form-group row">
                             <div class="col-sm">
-                                <label for="nom">Civilité</label>
+                                <label>Civilité</label>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm">
                                 <div class="custom-control custom-radio d-inline-block">
-                                    <input id="man" type="radio" class="custom-control-input" value="Monsieur" name="civilite" formControlName="civilite">
+                                    <input id="man" type="radio" class="custom-control-input" value="Monsieur" name="civility" formControlName="civility">
                                     <label class="custom-control-label" for="man">Monsieur</label>
                                 </div>
                                 <div class="custom-control custom-radio d-inline-block">
-                                    <input id="woman" type="radio" class="custom-control-input" value="Madame" name="civilite" formControlName="civilite">
+                                    <input id="woman" type="radio" class="custom-control-input" value="Madame" name="civility" formControlName="civility">
                                     <label class="custom-control-label" for="woman">Madame</label>
                                 </div>
                             </div>
@@ -31,6 +31,7 @@
                                 <input matInput class="form-control" type="text" id="nom" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                     <div *ngIf="f.lastName.errors.required">Nom requis</div>
+                                    <div *ngIf="f.lastName.errors.pattern">Nom invalide</div>
                                 </div>
                             </div>
 
@@ -39,6 +40,7 @@
                                 <input class="form-control" type="text" id="prenom" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
                                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                     <div *ngIf="f.firstName.errors.required">Prénom requis</div>
+                                    <div *ngIf="f.firstName.errors.pattern">Prénom invalide</div>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +51,7 @@
                                 <input class="form-control" type="text" id="adr" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
                                 <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                                     <div *ngIf="f.address.errors.required">Adresse requise</div>
+                                    <div *ngIf="f.address.errors.pattern">Adresse invalide</div>
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -63,29 +66,31 @@
 
                         <div class="form-group row">
                             <div class="col-sm">
-                                <label for="ville">Ville</label>
-                                <input class="form-control" type="text" id="ville" formControlName="ville" [ngClass]="{ 'is-invalid': submitted && f.ville.errors }">
-                                <div *ngIf="submitted && f.ville.errors" class="invalid-feedback">
-                                    <div *ngIf="f.ville.errors.required">Ville requise</div>
+                                <label for="city">Ville</label>
+                                <input class="form-control" type="text" id="city" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                    <div *ngIf="f.city.errors.required">Ville requise</div>
+                                    <div *ngIf="f.city.errors.pattern">Ville invalide</div>
                                 </div>
                             </div>
                             <div class="col-sm">
-                                <label for="pays">Pays</label>
-                                <input class="form-control" type="text" id="pays" formControlName="pays" [ngClass]="{ 'is-invalid': submitted && f.pays.errors }">
-                                <div *ngIf="submitted && f.pays.errors" class="invalid-feedback">
-                                    <div *ngIf="f.pays.errors.required">Pays requis</div>
+                                <label for="land">Pays</label>
+                                <input class="form-control" type="text" id="land" formControlName="land" [ngClass]="{ 'is-invalid': submitted && f.land.errors }">
+                                <div *ngIf="submitted && f.land.errors" class="invalid-feedback">
+                                    <div *ngIf="f.land.errors.required">Pays requis</div>
+                                    <div *ngIf="f.land.errors.pattern">Pays invalide</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm">
-                                <label for="tel">Téléphone</label>
-                                <input class="form-control" type="tel" id="tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" [(ngModel)]="seg" /> Format international : {{segment}}
-                                <input class="form-control" type="tel" id="tel_formated" formControlName="tel_formated" [(ngModel)]="segment" hidden>
-                                <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
-                                    <div *ngIf="f.tel.errors.required">Téléphone requis</div>
-                                    <div *ngIf="f.tel.errors.pattern">Téléphone invalide, max. 10 chiffres</div>
+                                <label for="phone">Téléphone</label>
+                                <input class="form-control" type="tel" id="phone" formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" [(ngModel)]="inputPhone" /> Format international : {{ouputPhone}}
+                                <input class="form-control" type="tel" id="phone_formated" formControlName="phone_formated" [(ngModel)]="ouputPhone" hidden>
+                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required">Téléphone requis</div>
+                                    <div *ngIf="f.phone.errors.pattern">Téléphone invalide, max. 10 chiffres</div>
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -97,7 +102,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <div class="col-sm">
                                 <label for="login">Login</label>
