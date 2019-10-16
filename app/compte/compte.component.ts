@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PhoneFormatPipe } from '../phone-format.pipe';
 
-// import custom validator to validate that password and confirm password fields match
-import { MustMatch } from '../_helpers/must-match.validator';
-
 @Component({
     selector: 'app-compte',
     templateUrl: './compte.component.html',
@@ -14,6 +11,7 @@ import { MustMatch } from '../_helpers/must-match.validator';
 export class CompteComponent implements OnInit {
 
     registerForm: FormGroup;
+    model:any={};
     submitted = false;
     private _ouputPhone;
     private _inputPhone;
@@ -93,10 +91,7 @@ export class CompteComponent implements OnInit {
                 //Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})')
             ]],
             confirmPassword: ['', Validators.required],
-        },
-            {
-                validator: MustMatch('password', 'confirmPassword')
-            });
+        });
 
         this.registerForm.valueChanges.subscribe(newVal => console.log(newVal))
     }
