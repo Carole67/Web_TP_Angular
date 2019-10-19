@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../catalog.service';
 import { Observable } from 'rxjs';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css']
+  styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
 
-  characters: Observable<any[]>;
+  characters: Observable<ProductComponent[]>;
   columns: string[];
 
-  constructor(private catalog:CatalogService) { }
+  constructor(private catalogService:CatalogService) { }
 
   ngOnInit() {
     // get column names
-    this.columns = this.catalog.getColumns();
+    this.columns = this.catalogService.getColumns();
     // get all data in mock-data.ts
-    this.characters = this.catalog.getCharacters();
+    this.characters = this.catalogService.getCharacters();
   }
 
 }

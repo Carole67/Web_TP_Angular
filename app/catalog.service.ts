@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
-import { CHARACTERS } from './mock-data';
+import {environment} from '../environments/environment';
+import { ProductComponent } from './product/product.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatalogService {
 
-  constructor() { }
+  constructor(private httpClient:HttpClient) { }
 
-  public getCharacters(): Observable<any[]>{
-    return Observable.of(CHARACTERS).delay(100);
+  public getCharacters(): Observable<ProductComponent[]>{    
+    return this.httpClient.get<ProductComponent[]>(environment.backendClient);
   }
   
   public getColumns(): string[]{
-    return ["Nom", "Prix"];
+    return ["Nom", "Matière", "Prix"];
   }
 }

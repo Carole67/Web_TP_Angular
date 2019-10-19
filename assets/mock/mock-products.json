@@ -1,21 +1,26 @@
 [{
         "Nom": "Bague",
+        "Matière": "Or blanc",
         "Prix": "370€"
     },
     {
-        "Nom": "Pendentif en or",
+        "Nom": "Pendentif avec saphir",
+        "Matière": "Or jaune",
         "Prix": "150€"
     },
     {
-        "Nom": "Boucles d\"oreille",
+        "Nom": "Boucles d'oreille oxydes",
+        "Matière": "Or blanc",
         "Prix": "50€"
     },
     {
         "Nom": "Bracelet",
+        "Matière": "Or jaune",
         "Prix": "350€"
     },
     {
         "Nom": "Collier",
+        "Matière": "Or jaune",
         "Prix": "450€"
     }
 ]
