@@ -9,6 +9,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PhoneFormatPipe } from './phone-format.pipe';
 import { RecapComponent } from './recap/recap.component';
 import { MustMatchDirective } from './_helpers/must-match.directive';
+import { CatalogComponent } from './catalog/catalog.component';
+import { ProductComponent } from './product/product.component';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { MustMatchDirective } from './_helpers/must-match.directive';
     FooterComponent,
     PhoneFormatPipe,
     RecapComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    CatalogComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
