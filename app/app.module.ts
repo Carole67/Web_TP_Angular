@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgbModule }  from '@ng-bootstrap/ng-bootstrap' ;
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -10,7 +12,6 @@ import { PhoneFormatPipe } from './phone-format.pipe';
 import { RecapComponent } from './recap/recap.component';
 import { MustMatchDirective } from './_helpers/must-match.directive';
 import { CatalogComponent } from './catalog/catalog.component';
-import { ProductComponent } from './product/product.component';
 import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
@@ -22,14 +23,15 @@ import {HttpClientModule} from '@angular/common/http'
     PhoneFormatPipe,
     RecapComponent,
     MustMatchDirective,
-    CatalogComponent,
-    ProductComponent
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,10 +1,17 @@
 <main>
     <div class="jumbotron vertical-center">
+
         <div class="container">
             <div class="card">
                 <!--Titre-->
                 <h2 class="text-center font-weight-bold">Catalogue</h2>
                 <div class="card-body">
+                    <form>
+                        <div class="form-group form-inline">
+                            Filtre : <input class="form-control ml-2" type="text" [formControl]="filter" />
+                        </div>
+                    </form>
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="thead-light">
@@ -15,8 +22,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let ch of characters | async" app-product [character]="ch" [columns]="columns"> </tr>
+                                <tr *ngFor="let ch of filteredCharacters | async ; index as i">
+                                    <th scope="row">{{ i + 1 }}</th>
+                                    <td>
+                                        <ngb-highlight [result]="ch.name" [term]="filter.value"></ngb-highlight>
+                                    </td>
+                                    <td>
+                                        <ngb-highlight [result]="ch.material" [term]="filter.value"></ngb-highlight>
+                                    </td>
+                                    <td>
+                                        <ngb-highlight [result]="ch.price" [term]="filter.value"></ngb-highlight>
+                                    </td>
+                                </tr>
                             </tbody>
+                            <button (click)="displayProducts()">Affiche liste produits</button>
                         </table>
                     </div>
                 </div>

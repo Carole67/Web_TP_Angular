@@ -1,26 +1,26 @@
 [{
-        "Nom": "Bague",
-        "Matière": "Or blanc",
-        "Prix": "370€"
+        "name": "Bague",
+        "material": "Or blanc",
+        "price": "370€"
     },
     {
-        "Nom": "Pendentif avec saphir",
-        "Matière": "Or jaune",
-        "Prix": "150€"
+        "name": "Pendentif avec saphir",
+        "material": "Or jaune",
+        "price": "150€"
     },
     {
-        "Nom": "Boucles d'oreille oxydes",
-        "Matière": "Or blanc",
-        "Prix": "50€"
+        "name": "Boucles d'oreille oxydes",
+        "material": "Or blanc",
+        "price": "50€"
     },
     {
-        "Nom": "Bracelet",
-        "Matière": "Or jaune",
-        "Prix": "350€"
+        "name": "Bracelet",
+        "material": "Or jaune",
+        "price": "350€"
     },
     {
-        "Nom": "Collier",
-        "Matière": "Or jaune",
-        "Prix": "450€"
+        "name": "Collier",
+        "material": "Or jaune",
+        "price": "450€"
     }
 ]
