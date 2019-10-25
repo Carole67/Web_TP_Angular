@@ -22,20 +22,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let ch of filteredCharacters | async ; index as i">
+                                <tr *ngFor="let p of filteredProducts | async ; index as i">
                                     <th scope="row">{{ i + 1 }}</th>
                                     <td>
-                                        <ngb-highlight [result]="ch.name" [term]="filter.value"></ngb-highlight>
+                                        <ngb-highlight [result]="p.name" [term]="filter.value"></ngb-highlight>
                                     </td>
                                     <td>
-                                        <ngb-highlight [result]="ch.material" [term]="filter.value"></ngb-highlight>
+                                        <ngb-highlight [result]="p.material" [term]="filter.value"></ngb-highlight>
                                     </td>
                                     <td>
-                                        <ngb-highlight [result]="ch.price" [term]="filter.value"></ngb-highlight>
+                                        <ngb-highlight [result]="p.price" [term]="filter.value"></ngb-highlight>
                                     </td>
                                 </tr>
                             </tbody>
-                            <button (click)="displayProducts()">Affiche liste produits</button>
                         </table>
                     </div>
                 </div>

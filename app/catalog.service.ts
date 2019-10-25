@@ -12,10 +12,12 @@ export class CatalogService {
 
   constructor(private httpClient:HttpClient) { }
 
-  public getCharacters(): Observable<Product[]>{    
+  // get products from JSON file
+  public getProducts(): Observable<Product[]>{    
     return this.httpClient.get<Product[]>(environment.backendClient);
   }
   
+  // get columns name
   public getColumns(): string[]{
     return ["#", "Nom", "Matière", "Prix"];
   }

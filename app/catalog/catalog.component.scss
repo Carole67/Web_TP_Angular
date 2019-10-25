@@ -27,22 +27,3 @@ h2 {
     border-radius: 20px;
     margin: 50px;
 }
-
-th[sortable].desc:before {
-    transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-}
-
-
-/* Filtering table demo */
-
-span.ngb-highlight {
-    background-color: yellow;
-}
-
-
-/* Complete table demo */
-
-span.ngb-highlight {
-    background-color: yellow;
-}
