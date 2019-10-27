@@ -6,12 +6,8 @@
                 <!--Titre-->
                 <h2 class="text-center font-weight-bold">Catalogue</h2>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group form-inline">
-                            Filtre : <input class="form-control ml-2" type="text" [formControl]="filter" />
-                        </div>
-                    </form>
-
+                    <app-product-filter (changeType)="majType($event)" (changeFiltre)="majFiltre($event)">
+                    </app-product-filter>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="thead-light">
@@ -22,17 +18,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let p of filteredProducts | async ; index as i">
-                                    <th scope="row">{{ i + 1 }}</th>
-                                    <td>
-                                        <ngb-highlight [result]="p.name" [term]="filter.value"></ngb-highlight>
-                                    </td>
-                                    <td>
-                                        <ngb-highlight [result]="p.material" [term]="filter.value"></ngb-highlight>
-                                    </td>
-                                    <td>
-                                        <ngb-highlight [result]="p.price" [term]="filter.value"></ngb-highlight>
-                                    </td>
+                                <tr *ngFor="let p of products | specificProducts :inputFiltre:type ; index as i ">
+                                    <th scope="row ">{{ i + 1 }}</th>
+                                    <td>{{p.name}}</td>
+                                    <td>{{p.material}}</td>
+                                    <td>{{p.price}} €</td>
                                 </tr>
                             </tbody>
                         </table>

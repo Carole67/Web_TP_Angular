@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { CatalogService } from '../catalog.service';
-import { Observable, combineLatest } from 'rxjs';
 import { Product } from '../models/product';
-import { FormControl } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-catalog',
@@ -12,34 +10,27 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class CatalogComponent implements OnInit {
 
-  // product values from JSON
-  products: Observable<Product[]>;
-  // filtered products
-  filteredProducts: Observable<Product[]>;
   // columns names
   columns: string[];
-  // user filter data
-  filter: FormControl;
-  // listening to changes 
-  filter$: Observable<string>;
+  //products
+  products: Product[];
 
-  constructor(private catalogService: CatalogService) {
-    this.products = this.catalogService.getProducts();
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    this.filteredProducts = combineLatest(this.products, this.filter$).pipe(
-      map(([products, filterString]) => products.filter(ch =>   
-            ch.name.toLowerCase().indexOf(filterString) !== -1
-            || ch.material.toLowerCase().indexOf(filterString) !== -1
-            || ch.price.toLowerCase().indexOf(filterString) !== -1
-      ))
-    );
-  }
+  inputFiltre : string = "";
+  type : string = "";
+
+  constructor(private service: CatalogService) { }
 
   ngOnInit() {
-    // get column names
-    this.columns = this.catalogService.getColumns();
-    // get all data in mock-data.ts
-    this.products = this.catalogService.getProducts();
+    this.columns = this.service.getColumns();
+
+    this.service.getProducts().subscribe(value => this.products = value);
+  }
+
+  public majType(type: string) {
+    this.type = type;
+  }
+
+  public majFiltre(filte: string) {
+    this.inputFiltre = filte;
   }
 }

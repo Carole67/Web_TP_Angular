@@ -12,7 +12,9 @@ import { PhoneFormatPipe } from './phone-format.pipe';
 import { RecapComponent } from './recap/recap.component';
 import { MustMatchDirective } from './_helpers/must-match.directive';
 import { CatalogComponent } from './catalog/catalog.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { SpecificProductsPipe } from './specific-products.pipe'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {HttpClientModule} from '@angular/common/http'
     PhoneFormatPipe,
     RecapComponent,
     MustMatchDirective,
-    CatalogComponent
+    CatalogComponent,
+    ProductFilterComponent,
+    SpecificProductsPipe
   ],
   imports: [
     BrowserModule,
