@@ -6,7 +6,7 @@
                 <!--Titre-->
                 <h2 class="text-center font-weight-bold">Catalogue</h2>
                 <div class="card-body">
-                    <app-product-filter (changeType)="majType($event)" (changeFiltre)="majFiltre($event)">
+                    <app-product-filter (notifyCategory)="updateCategory($event)" (notifyFilter)="updateFilter($event)">
                     </app-product-filter>
                     <div class="table-responsive">
                         <table class="table table-hover">

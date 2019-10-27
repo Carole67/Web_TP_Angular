@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CatalogService } from '../catalog.service';
 import { Product } from '../models/product';
 import 'rxjs/add/operator/filter';
@@ -10,27 +10,40 @@ import 'rxjs/add/operator/filter';
 })
 export class CatalogComponent implements OnInit {
 
+  // subscriber to listen or not 
+  private _subscriber;
+
   // columns names
   columns: string[];
   //products
   products: Product[];
 
-  inputFiltre : string = "";
-  type : string = "";
+  // value from user
+  inputFiltre: string = "";
+  // kind of filter selected 
+  type: string = "";
 
   constructor(private service: CatalogService) { }
 
   ngOnInit() {
+    // get columns value
     this.columns = this.service.getColumns();
-
-    this.service.getProducts().subscribe(value => this.products = value);
+    // get products value
+    this._subscriber = this.service.getProducts().subscribe(value => this.products = value);
   }
 
-  public majType(type: string) {
+  // set value of category when it has changed
+  public updateCategory(type: string) {
     this.type = type;
   }
 
-  public majFiltre(filte: string) {
+  // set value of input value when it has changed
+  public updateFilter(filte: string) {
     this.inputFiltre = filte;
+  }
+
+  // Stop listening 
+  ngOnDestroy(): void {
+    this._subscriber.unsubscribe();
   }
 }

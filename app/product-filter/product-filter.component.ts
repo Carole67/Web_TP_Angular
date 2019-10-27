@@ -6,20 +6,25 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./product-filter.component.css']
 })
 
+// filter applied on products
 export class ProductFilterComponent implements OnInit {
 
   constructor() { }
 
-  @Output() changeFiltre: EventEmitter<string> = new EventEmitter<string>();
-  @Output() changeType: EventEmitter<string> = new EventEmitter<string>();
-  inputFiltre: string = "";
+  // emitter for changes
+  @Output() notifyFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() notifyCategory: EventEmitter<string> = new EventEmitter<string>();
+  
+  // values sended
+  inputFilter: string = "";
   type: string = "";
 
   ngOnInit() {
   }
 
+  // notify changes to parent
   notifyParent() {
-    this.changeType.emit(this.type);
-    this.changeFiltre.emit(this.inputFiltre);
+    this.notifyCategory.emit(this.type);
+    this.notifyFilter.emit(this.inputFilter);
   }
 }
