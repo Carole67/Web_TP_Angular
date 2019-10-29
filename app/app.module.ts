@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbModule }  from '@ng-bootstrap/ng-bootstrap' ;
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -12,9 +12,11 @@ import { PhoneFormatPipe } from './phone-format.pipe';
 import { RecapComponent } from './recap/recap.component';
 import { MustMatchDirective } from './_helpers/must-match.directive';
 import { CatalogComponent } from './catalog/catalog.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
-import { SpecificProductsPipe } from './specific-products.pipe'
+import { SpecificProductsPipe } from './specific-products.pipe';
+import { AppRoutingModule } from '../app-routing.module';
+import {PageNotFoundComponent} from '../app/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { SpecificProductsPipe } from './specific-products.pipe'
     MustMatchDirective,
     CatalogComponent,
     ProductFilterComponent,
-    SpecificProductsPipe
+    SpecificProductsPipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,10 @@ import { SpecificProductsPipe } from './specific-products.pipe'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    AppRoutingModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl:"always"})
+
   ],
   bootstrap: [AppComponent]
 })
