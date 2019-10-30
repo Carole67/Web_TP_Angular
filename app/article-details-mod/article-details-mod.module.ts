@@ -10,6 +10,7 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
   imports: [
     CommonModule,
     ArticleDetailsModRoutingModule
-  ]
+  ],
+  bootstrap: [ArticleDetailsComponent]
 })
 export class ArticleDetailsModModule { }

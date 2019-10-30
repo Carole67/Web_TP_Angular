@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { PageNotFoundComponent} from '../app/page-not-found/page-not-found.component';
 import { WelcomePageComponent } from '../app/welcome-mod/welcome-page/welcome-page.component';
-import { ArticleDetailsComponent} from '../app/article-details-mod/article-details/article-details.component'
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { ArticleDetailsComponent} from '../app/article-details-mod/article-detai
     FooterComponent,
     PhoneFormatPipe,
     PageNotFoundComponent,
-    WelcomePageComponent,
-    ArticleDetailsComponent
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
