@@ -9,11 +9,11 @@ import {WelcomePageComponent} from './app/welcome-mod/welcome-page/welcome-page.
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  //{ path: 'customerAccount', component: CompteComponent},
   { path: 'customerAccount', loadChildren:()=> import('./app/customer-account-mod/customer-account.module').then(m=>m.CustomerAccountModule)},
   { path: 'catalog', loadChildren: () => import('./app/catalog-mod/catalog-mod.module').then(m=>m.CatalogModModule) },
   { path: 'articleDetails', component: ArticleDetailsComponent },
-  { path: 'basket', component: BasketComponent },
+  { path: 'basket', loadChildren:() => import('./app/basket-mod/basket-mod.module').then(m=>m.BasketModModule)}
+  //{ path: 'basket', component: BasketComponent },
   //{ path: '**', component: PageNotFoundComponent },
 ];
 

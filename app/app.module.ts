@@ -13,7 +13,6 @@ import { AppRoutingModule } from '../app-routing.module';
 import { PageNotFoundComponent} from '../app/page-not-found/page-not-found.component';
 import { WelcomePageComponent } from '../app/welcome-mod/welcome-page/welcome-page.component';
 import { ArticleDetailsComponent} from '../app/article-details-mod/article-details/article-details.component'
-import {BasketComponent} from '../app/basket-mod/basket/basket.component'
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import {BasketComponent} from '../app/basket-mod/basket/basket.component'
     PhoneFormatPipe,
     PageNotFoundComponent,
     WelcomePageComponent,
-    ArticleDetailsComponent,
-    BasketComponent
+    ArticleDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +33,6 @@ import {BasketComponent} from '../app/basket-mod/basket/basket.component'
     NgbModule,
     AppRoutingModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl:"always"})
-
   ],
   bootstrap: [AppComponent]
 })

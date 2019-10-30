@@ -92,8 +92,6 @@ export class CompteComponent implements OnInit {
             ]],
             confirmPassword: ['', Validators.required],
         });
-
-        this.registerForm.valueChanges.subscribe(newVal => console.log(newVal))
     }
 
 
