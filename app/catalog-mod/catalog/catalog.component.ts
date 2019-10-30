@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CatalogService } from '../catalog.service';
-import { Product } from '../models/product';
+import { CatalogService } from '../../catalog.service';
+import { Product } from '../../models/product';
 import 'rxjs/add/operator/filter';
 
 @Component({
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/filter';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit, OnDestroy {
 
   // subscriber to listen or not 
   private _subscriber;

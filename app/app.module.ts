@@ -5,32 +5,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CompteComponent } from './compte/compte.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { PhoneFormatPipe } from './phone-format.pipe';
-import { RecapComponent } from './recap/recap.component';
-import { MustMatchDirective } from './_helpers/must-match.directive';
-import { CatalogComponent } from './catalog/catalog.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
-import { SpecificProductsPipe } from './specific-products.pipe';
 import { AppRoutingModule } from '../app-routing.module';
-import {PageNotFoundComponent} from '../app/page-not-found/page-not-found.component';
+import { PageNotFoundComponent} from '../app/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from '../app/welcome-mod/welcome-page/welcome-page.component';
+import { ArticleDetailsComponent} from '../app/article-details-mod/article-details/article-details.component'
+import {BasketComponent} from '../app/basket-mod/basket/basket.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompteComponent,
     NavigationComponent,
     FooterComponent,
     PhoneFormatPipe,
-    RecapComponent,
-    MustMatchDirective,
-    CatalogComponent,
-    ProductFilterComponent,
-    SpecificProductsPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WelcomePageComponent,
+    ArticleDetailsComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,

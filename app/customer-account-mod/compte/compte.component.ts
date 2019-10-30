@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { PhoneFormatPipe } from '../phone-format.pipe';
+import { PhoneFormatPipe } from '../../phone-format.pipe';
 
 @Component({
     selector: 'app-compte',
