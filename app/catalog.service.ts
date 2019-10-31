@@ -18,6 +18,16 @@ export class CatalogService {
     return this.httpClient.get<Product[]>(environment.backendClient);
   }
 
+  // product by id
+  public getProductById(id: number | string): Observable<Product> {
+    return this.getProducts().pipe(
+      map(products => products.find(p => p.id === +id))
+    );
+    /* this.httpClient.get<Product[]>(environment.backendClient).pipe(
+      map(products => products.find(p => p.id === +id))
+    );*/
+  }
+  
   // get columns name
   public getColumns(): string[] {
     return ["#", "Nom", "Matière", "Prix"];

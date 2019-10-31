@@ -5,6 +5,7 @@ import { Product } from '../../models/product';
 import { Store } from '@ngxs/store';
 import 'rxjs/add/operator/filter';
 import { AddProductToCart } from '../../shared/actions/product-action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -26,7 +27,7 @@ export class CatalogComponent implements OnInit {
   // kind of filter selected 
   type: string = "";
 
-  constructor(private service: CatalogService, private store: Store) {
+  constructor(private service: CatalogService, private store: Store, private router: Router) {
     this.products = this.store.select(state => state.cart.cart);
   }
 
@@ -53,6 +54,10 @@ export class CatalogComponent implements OnInit {
 
   onClick(p: Product) {
     this.addProduct(p);
+  }
+
+  onNavigate(p) {
+    this.router.navigate(['/catalog/details/', p.id])
   }
 
   addProduct(p: Product) {

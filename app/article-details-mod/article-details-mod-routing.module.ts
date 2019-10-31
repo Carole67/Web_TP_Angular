@@ -4,8 +4,7 @@ import { ArticleDetailsComponent } from '../../app/article-details-mod/article-d
 import { CommonModule } from '@angular/common'
 
 const routes: Routes = [
-  { path: '', component: ArticleDetailsComponent },
-
+  { path: ':id', component: ArticleDetailsComponent }
 ];
 
 @NgModule({
