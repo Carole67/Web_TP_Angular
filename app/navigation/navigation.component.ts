@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-navigation',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  nbProducts: number;
+
+  constructor(private store: Store) {
+    this.store.select(state => state.cart.cart).subscribe(u => this.nbProducts = u.length);
+  }
 
   ngOnInit() {
   }

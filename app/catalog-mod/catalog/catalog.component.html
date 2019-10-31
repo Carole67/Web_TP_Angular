@@ -10,7 +10,7 @@
                     </app-product-filter>
                     <div class="table-responsive">
                         <table class="table table-hover">
-                            <thead class="thead-light">
+                            <thead>
                                 <tr>
                                     <th *ngFor="let col of columns">
                                         {{col}}
@@ -18,11 +18,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let p of products | specificProducts :inputFiltre:type ; index as i ">
+                                <tr *ngFor="let p of products | async; index as i ">
                                     <th scope="row ">{{ i + 1 }}</th>
                                     <td>{{p.name}}</td>
                                     <td>{{p.material}}</td>
                                     <td>{{p.price}} €</td>
+                                    <td><button type="button" class="btn btn-primary" (click)="onClick (p)">+</button></td>
                                 </tr>
                             </tbody>
                         </table>

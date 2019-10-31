@@ -1,14 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CatalogService } from '../../catalog.service';
+import { Observable } from 'rxjs';
 import { Product } from '../../models/product';
+import { Store } from '@ngxs/store';
 import 'rxjs/add/operator/filter';
+import { AddProductToCart } from '../../shared/actions/product-action';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })
-export class CatalogComponent implements OnInit, OnDestroy {
+export class CatalogComponent implements OnInit {
 
   // subscriber to listen or not 
   private _subscriber;
@@ -16,20 +19,21 @@ export class CatalogComponent implements OnInit, OnDestroy {
   // columns names
   columns: string[];
   //products
-  products: Product[];
+  products: Observable<Product[]>;
 
   // value from user
   inputFiltre: string = "";
   // kind of filter selected 
   type: string = "";
 
-  constructor(private service: CatalogService) { }
+  constructor(private service: CatalogService, private store: Store) {
+    this.products = this.store.select(state => state.cart.cart);
+  }
 
   ngOnInit() {
     // get columns value
     this.columns = this.service.getColumns();
-    // get products value
-    this._subscriber = this.service.getProducts().subscribe(value => this.products = value);
+    this.products = this.service.getProducts();
   }
 
   // set value of category when it has changed
@@ -38,12 +42,21 @@ export class CatalogComponent implements OnInit, OnDestroy {
   }
 
   // set value of input value when it has changed
-  public updateFilter(filte: string) {
-    this.inputFiltre = filte;
+  public updateFilter(filter: string) {
+    this.inputFiltre = filter;
   }
 
   // Stop listening 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this._subscriber.unsubscribe();
+  }*/
+
+  onClick(p: Product) {
+    this.addProduct(p);
   }
+
+  addProduct(p: Product) {
+    this.store.dispatch(new AddProductToCart(p));
+  }
+
 }
